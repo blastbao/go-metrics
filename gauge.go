@@ -2,6 +2,23 @@ package metrics
 
 import "sync/atomic"
 
+
+
+
+
+// g := metrics.NewGauge()
+// metrics.Register("bar", g)
+// //更新瞬时值
+// g.Update(47)
+
+// //获取出瞬时值
+// g.Value()
+
+
+
+
+
+
 // Gauges hold an int64 value that can be set arbitrarily.
 type Gauge interface {
 	Snapshot() Gauge

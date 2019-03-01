@@ -5,6 +5,21 @@ import (
 	"time"
 )
 
+
+//Timer：对某个代码模块同时进行统计调用频率以及调用耗时统计。
+//指标就是Histograms以及Meters两种统计方式的合集。
+
+// t := metrics.NewTimer()
+// metrics.Register("bang", t)
+
+// t.Time(func() {
+//     //do some thing
+// })
+// t.Update(47)
+
+// //获取方式同meter以及Histograms
+
+
 // Timers capture the duration and rate of events.
 type Timer interface {
 	Count() int64

@@ -2,6 +2,23 @@ package metrics
 
 import "sync/atomic"
 
+
+
+
+
+
+// c := metrics.NewCounter()
+// metrics.Register("foo", c)
+// //进行加操作
+// c.Inc(47)
+// //进行减操作
+// c.Dec(1)
+// //获取出值
+// c.Count()
+
+
+
+
 // Counters hold an int64 value that can be incremented and decremented.
 type Counter interface {
 	Clear()

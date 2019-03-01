@@ -1,5 +1,59 @@
 package metrics
 
+
+
+
+// 主要用于对数据集中的值分布情况进行统计，
+// 典型的应用场景为接口耗时，接口每次调用都会产生耗时，记录每次调用耗时来对接口耗时情况进行分析显然不现实。
+// 因此将接口一段时间内的耗时看做数据集，并采集Count，Min, Max, Mean, Median, 75%, 95%, 99%等指标，
+// 以相对较小的资源消耗，来尽可能反应数据集的真实情况。
+
+// Count：距离上次清理后产生的样本数量．
+// Min：样本中的最小值
+// Max：样本中的最大值
+// Mean：所有样本的求得的平均值
+// Median：样本中的中间位置的值．
+// 75%：样本中的%75位置的值．
+// 95%：样本中的%95位置的值．
+// 99%：样本中的%99位置的值．
+
+
+
+
+
+
+
+// h := metrics.NewHistogram(s)
+// metrics.Register("baz", h)
+// //写入数据集
+// h.Update(47)
+// //获取数据集只读快照
+// h := metric.Snapshot()
+// //数据集大小
+// h.Count()
+// //最小值
+// h.Min()
+// //最大值
+// h.Max()
+// //平均值
+// h.Mean()
+// ps := h.Percentiles([]float64{0.5, 0.75, 0.95, 0.99})
+// //中位数
+// ps[0]
+// //75%的数
+// ps[1]
+// //95%的数
+// ps[2]
+// //99%的数
+// ps[3]
+
+
+
+
+
+
+
+
 // Histograms calculate distribution statistics from a series of int64 values.
 type Histogram interface {
 	Clear()

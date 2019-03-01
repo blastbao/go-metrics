@@ -7,15 +7,43 @@ import (
 	"time"
 )
 
+
+
+
+
+// Meter 用于计算一段时间内的计量，通常用于计算接口调用频率，如QPS(每秒的次数)，主要分为rateMean,Rate1/Rate5/Rate15等指标.
+
+// 1. RateMean：单位时间内发生的次数，如一分钟发送100次，则该值为100/60。
+// 2. Rate1/Rate5/Rate15：1分钟/5分钟/15分钟内的滑动平均值(moving average)，也叫移动平均值，详见百度。
+
+// m := metrics.NewMeter()
+// metrics.Register("quux", m)
+// //写入数据集
+// m.Mark(47)
+// //获取数据集只读快照
+// m := metric.Snapshot()
+// //数据集大小
+// m.Count()
+// //1分钟滑动平均值
+// m.Rate1()
+// //5分钟滑动平均值
+// m.Rate5()
+// //15分钟滑动平均值
+// m.Rate15()
+// //平均值
+// m.RateMean()
+
+
+
 // Meters count events to produce exponentially-weighted moving average rates
 // at one-, five-, and fifteen-minutes and a mean rate.
-type Meter interface {
+type Meter  interface {
 	Count() int64
 	Mark(int64)
 	Rate1() float64
 	Rate5() float64
-	Rate15() float64
-	RateMean() float64
+	Rate15() float64 	//15min内移动平均值
+	RateMean() float64 	//单位时间内发生的次数
 	Snapshot() Meter
 	Stop()
 }
